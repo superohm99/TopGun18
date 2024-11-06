@@ -25,9 +25,9 @@ def sendData():
 
 @app.route('/createData',methods=["POST"])
 def createData():
-    alert_data = request.json
-    alert_data['createDate'] = datetime.today()
-    alert = Alert(**alert_data)
+    alertData = request.json
+    alertData['createDate'] = datetime.today()
+    alert = Alert(**alertData)
     result = collection.insert_one(alert.dict())
         
     return {
