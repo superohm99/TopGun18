@@ -1,11 +1,3 @@
-from flask import Flask
-app = Flask(__name__)
-
-
-@app.route('/')
-def index():
-    return "<h1>Hello </h1>"
-
-
+from workspace import app
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, port=5888)
