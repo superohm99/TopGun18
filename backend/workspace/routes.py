@@ -1,7 +1,8 @@
 from flask import Flask,jsonify, request
-from workspace import app,collection
+from workspace import app,collection,socketio
 from datetime import datetime
 from pydantic import BaseModel
+import time
 
 class Alert(BaseModel):
     failureType: str
@@ -36,3 +37,11 @@ def createData():
         "status": bool(alert.status),
         "createDate": str(alert.createDate)
     },201
+
+@socketio.on('message')
+def handle_message(data):
+    print('Received message: ',data)
+    for i in range(10):
+        now = datetime.now()
+        socketio.emit('response', 'You sent {0} {1}'.format(data,str(now)))
+        time.sleep(5)
