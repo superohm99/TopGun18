@@ -1,0 +1,24 @@
+# Use the official Python image as the base image
+FROM python:3
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the 'requirement.txt' from the local machine to the container's working directory
+COPY requirement.txt .
+
+# Install dependencies from requirement.txt and upgrade pip
+RUN pip install --no-cache-dir --upgrade pip
+
+RUN pip install --no-cache-dir -r requirement.txt
+# Copy the 'api.py' (or app.py) file from the local machine to the container's working directory
+COPY app.py .
+
+# Copy the 'workspace' folder from the local machine to the container
+COPY workspace/ ./workspace
+
+# Set the command to run the application (api.py) when the container starts
+CMD ["python", "app.py"]
+
+# Expose port 5000 for the application to communicate with the outside world
+EXPOSE 5888
