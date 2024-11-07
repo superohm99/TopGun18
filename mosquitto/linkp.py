@@ -1,7 +1,8 @@
 import paho.mqtt.client as mqtt
 import time
 
-brokerHostname = "172.18.32.1"
+# brokerHostname = "172.18.32.1"
+brokerHostname = "localhost"
 port = 1883
 
 def onConnect(client, userData, flags, returnCode):

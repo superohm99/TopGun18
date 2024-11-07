@@ -12,7 +12,7 @@ def onConnect(client, userData, flags, returnCode):
 def onMessage(client, userData, message):
     print("Received message: ", str(message.payload.decode("utf-8")))
 
-brokerHostname = "172.18.32.1"
+brokerHostname = "localhost"
 port = 1883
 
 client = mqtt.Client("Client2")
